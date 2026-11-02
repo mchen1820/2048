@@ -5,6 +5,94 @@
   <title>2048</title>
 
   <link href="style/main.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom font + background overrides (loaded after main.css so they win) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body,
+    body * {
+      font-family: "Fredoka", "Trebuchet MS", sans-serif !important;
+    }
+
+    html, body {
+      min-height: 100%;
+      color: #3b3355;
+      background: #6a5acd;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.35) 0, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(255, 182, 193, 0.45) 0, transparent 45%),
+        linear-gradient(160deg, #a6c1ee 0%, #c9b6f2 50%, #f6c1d9 100%);
+      background-attachment: fixed;
+    }
+
+    h1.title,
+    .game-intro,
+    .game-explanation,
+    .container p,
+    .container a {
+      color: #3b3355;
+    }
+
+    hr {
+      border-bottom-color: rgba(59, 51, 85, 0.25);
+    }
+
+    /* ---- Rainbow theme ---- */
+
+    /* Board: darker so the colors pop */
+    .game-container {
+      background: #3b3355;
+    }
+    .grid-cell {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    /* Buttons + score boxes */
+    .container a.restart-button,
+    .container .game-container .game-message a {
+      background: linear-gradient(90deg, #ff5a5f, #ff9f43, #ffd93d, #6bcb77, #4d9de0, #9b5de5);
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+    .score-container, .best-container {
+      background: #3b3355;
+    }
+
+    /* Tiles: red > orange > yellow > green > teal > blue > indigo > violet > pink */
+    .tile .tile-inner { color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); }
+
+    .tile.tile-2 .tile-inner    { background: #ff5a5f; color: #fff; }
+    .tile.tile-4 .tile-inner    { background: #ff9f43; color: #fff; }
+    .tile.tile-8 .tile-inner    { background: #ffd93d; color: #5a4a00; text-shadow: none; }
+    .tile.tile-16 .tile-inner   { background: #6bcb77; color: #fff; }
+    .tile.tile-32 .tile-inner   { background: #2ec4b6; color: #fff; }
+    .tile.tile-64 .tile-inner   { background: #4d9de0; color: #fff; }
+    .tile.tile-128 .tile-inner  { background: #5b6cff; color: #fff;
+      box-shadow: 0 0 30px 10px rgba(91, 108, 255, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.15); }
+    .tile.tile-256 .tile-inner  { background: #9b5de5; color: #fff;
+      box-shadow: 0 0 30px 10px rgba(155, 93, 229, 0.40), inset 0 0 0 1px rgba(255, 255, 255, 0.19); }
+    .tile.tile-512 .tile-inner  { background: #f15bb5; color: #fff;
+      box-shadow: 0 0 30px 10px rgba(241, 91, 181, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.24); }
+
+    /* The big ones get full-rainbow gradients */
+    .tile.tile-1024 .tile-inner {
+      background: linear-gradient(135deg, #ff5a5f, #ff9f43, #ffd93d, #6bcb77, #4d9de0, #9b5de5);
+      color: #fff;
+      box-shadow: 0 0 30px 10px rgba(255, 159, 67, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+    }
+    .tile.tile-2048 .tile-inner {
+      background: linear-gradient(135deg, #ff5a5f, #ff9f43, #ffd93d, #6bcb77, #2ec4b6, #4d9de0, #9b5de5, #f15bb5);
+      color: #fff;
+      box-shadow: 0 0 36px 14px rgba(255, 217, 61, 0.6), inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+    }
+    .tile.tile-super .tile-inner {
+      background: conic-gradient(#ff5a5f, #ff9f43, #ffd93d, #6bcb77, #4d9de0, #9b5de5, #f15bb5, #ff5a5f);
+      color: #fff;
+    }
+  </style>
+
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
   <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
